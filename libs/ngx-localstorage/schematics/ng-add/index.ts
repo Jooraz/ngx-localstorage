@@ -21,8 +21,8 @@ const importModuleSet: {
   importPath: string;
 }[] = [
   {
-    moduleName: 'NgxLocalstorageModule',
-    importModuleStatement: 'NgxLocalstorageModule.forRoot()',
+    moduleName: 'NgxLocalStorageModule',
+    importModuleStatement: 'NgxLocalStorageModule.forRoot()',
     importPath: 'ngx-localstorage'
   }
 ];
