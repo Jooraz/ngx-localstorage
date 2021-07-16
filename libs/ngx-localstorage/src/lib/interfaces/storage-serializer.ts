@@ -11,5 +11,5 @@ export interface StorageSerializer<T = unknown> {
      * Deserializes a stored value.
      * @param storedValue stored value
      */
-    deserialize(storedValue: string): T;
+    deserialize(storedValue: string | null): T;
 }

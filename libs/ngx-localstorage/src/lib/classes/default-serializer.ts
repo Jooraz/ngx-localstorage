@@ -16,7 +16,7 @@ export class DefaultSerializer implements StorageSerializer {
     /**
      * @inheritdoc
      */
-    public deserialize(storedValue: string): unknown {
-        return JSON.parse(storedValue);
+    public deserialize(storedValue: string | null): unknown | null {
+        return storedValue ? JSON.parse(storedValue) : null;
     }
 }

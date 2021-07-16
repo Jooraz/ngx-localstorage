@@ -52,6 +52,6 @@ export const defaultConfig: NgxLocalstorageConfiguration = {
 /**
  * StorageSerializer Guard
  */
-export const isSerializer = (prefixOrSerializer: string | StorageSerializer): prefixOrSerializer is StorageSerializer => {
+export const isSerializer = (prefixOrSerializer: string | StorageSerializer | undefined): prefixOrSerializer is StorageSerializer => {
   return !!prefixOrSerializer && (prefixOrSerializer as StorageSerializer).serialize !== undefined;
 }

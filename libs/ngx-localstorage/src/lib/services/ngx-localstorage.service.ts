@@ -47,6 +47,7 @@ export class LocalStorageService {
     } catch (error) {
       console.error(error);
     }
+    return undefined;
   }
 
   /**
@@ -63,6 +64,7 @@ export class LocalStorageService {
     } catch (error) {
       console.error(error);
     }
+    return undefined;
   }
 
   /**
