@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { NgxLocalstorageConfiguration } from './interfaces/storage-configuration';
 import { LocalStorageDirective } from './directives/ngx-localstorage.directive';
@@ -43,7 +43,7 @@ export class NgxLocalStorageModule {
    * @return The new `NgModule`.
    *
    */
-  public static forRoot(config?: NgxLocalstorageConfiguration): ModuleWithProviders<NgxLocalStorageModule> {
+  public static forRoot(config?: Partial<NgxLocalstorageConfiguration>): ModuleWithProviders<NgxLocalStorageModule> {
     return {
       ngModule: NgxLocalStorageModule,
       providers: [

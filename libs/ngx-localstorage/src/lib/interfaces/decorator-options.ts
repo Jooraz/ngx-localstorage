@@ -17,5 +17,5 @@ export interface DecoratorOpts {
   /**
    * An optional transformer to handle 'null' values.
    */
-  nullTransformer?: () => any;
+  nullTransformer?: () => unknown;
 }

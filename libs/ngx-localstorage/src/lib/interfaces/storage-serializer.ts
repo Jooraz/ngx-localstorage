@@ -1,7 +1,7 @@
 /**
  * Defines the librarys serializer.
  */
-export interface StorageSerializer<T = any> {
+export interface StorageSerializer<T = unknown> {
     /**
      * Prepares the value to be stored as its string representation.
      * @param value Value to be serialized

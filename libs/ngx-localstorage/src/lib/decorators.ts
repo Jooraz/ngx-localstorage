@@ -11,6 +11,7 @@ import { DefaultSerializer } from './classes/default-serializer';
  * @param options configuration used for the decoarator
  */
 export function ngxLocalStorage(options?: DecoratorOpts) {
+  // eslint-disable-next-line @typescript-eslint/ban-types
   return function (target: Object, propertyDescription: string) {
 
     const key = !!options && !!options.key ? options.key : propertyDescription;
@@ -33,7 +34,7 @@ export function ngxLocalStorage(options?: DecoratorOpts) {
           if (ev.newValue !== 'null') {
             target[propertyDescription] = ev.newValue;
           } else {
-            target[propertyDescription] = !!options.nullTransformer ? options.nullTransformer() : null;
+            target[propertyDescription] = options.nullTransformer ? options.nullTransformer() : null;
           }
         }
       });
@@ -41,7 +42,7 @@ export function ngxLocalStorage(options?: DecoratorOpts) {
     Object.defineProperty(target, propertyDescription, {
       get: function () {
         const storageValue = service.get(key, prefix);
-        return storageValue == null && !!options.nullTransformer ? options.nullTransformer() : storageValue;
+        return storageValue == null && options.nullTransformer ? options.nullTransformer() : storageValue;
       },
       set: function (value: any) {
         service.set(key, value, prefix);

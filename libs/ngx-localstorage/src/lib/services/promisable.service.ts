@@ -67,7 +67,7 @@ export class PromisableService {
         const prefix = typeof prefixOrSerializer === 'string' ? prefixOrSerializer : undefined;
         serializer = isSerializer(prefixOrSerializer)
           ? (prefixOrSerializer as StorageSerializer)
-          : !!serializer
+          : serializer
             ? serializer
             : this.defaultSerializer;
 
@@ -100,7 +100,7 @@ export class PromisableService {
         const prefix = typeof prefixOrSerializer === 'string' ? prefixOrSerializer : undefined;
         serializer = isSerializer(prefixOrSerializer)
           ? (prefixOrSerializer as StorageSerializer)
-          : !!serializer
+          : serializer
             ? serializer
             : this.defaultSerializer;
 

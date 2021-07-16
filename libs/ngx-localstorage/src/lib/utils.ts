@@ -6,8 +6,8 @@ import { StorageSerializer } from './interfaces/storage-serializer';
  * @param path Path to the property
  * @param object Object to access
  */
-export const getProperty = (path: string[], object: any) =>
-  path.reduce((obj: any, p: any) => (!!obj) ? obj[p] : null, object);
+export const getProperty = (path: string[], object: unknown) =>
+  path.reduce((obj: any, p: any) => obj ? obj[p] : null, object);
 
 /**
  * Sets an objects property based on its path.
