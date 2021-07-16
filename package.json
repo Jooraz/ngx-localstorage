@@ -34,6 +34,7 @@
     "deploy": "ng deploy --base-href=https://bohoffi.github.io/ngx-localstorage/",
     "copy": "cpx README.md dist/ngx-localstorage",
     "build:lib": "ng build ngx-localstorage --prod && npm run copy",
+    "lint:lib": "ng lint ngx-localstorage",
     "test:lib": "ng test ngx-localstorage",
     "test:lib:headless": "cross-env CI=true npm run test:lib",
     "postbuild:lib": "npm run build --prefix libs/ngx-localstorage",
