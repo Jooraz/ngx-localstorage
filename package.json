@@ -27,6 +27,8 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "contributors:add": "all-contributors add",
+    "contributors:check": "all-contributors check",
+    "contributors:generate": "all-contributors generate",
     "hooks:pre-commit": "node hooks/pre-commit.js",
     "commit": "cz",
     "deploy": "ng deploy --base-href=https://bohoffi.github.io/ngx-localstorage/",
