@@ -1,23 +1,14 @@
 {
   "npmScope": "ngx-localstorage",
-  "implicitDependencies": {
-    "angular.json": "*",
-    "package.json": "*",
-    "tslint.json": "*",
-    "nx.json": "*",
-    "tsconfig.base.json": "*"
+  "affected": {
+    "defaultBase": "master"
   },
-  "projects": {
-    "ngx-localstorage": {
-      "tags": []
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
     },
-    "ngx-localstorage-demo": {
-      "tags": []
-    },
-    "ngx-localstorage-demo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["ngx-localstorage-demo"]
-    }
+    ".eslintrc.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -27,7 +18,21 @@
       }
     }
   },
-  "affected": {
-    "defaultBase": "master"
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
+  },
+  "projects": {
+    "ngx-localstorage-demo": {
+      "tags": []
+    },
+    "ngx-localstorage-demo-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ngx-localstorage-demo"]
+    }
   }
 }
