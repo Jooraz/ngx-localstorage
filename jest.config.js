@@ -1,3 +1,6 @@
 module.exports = {
-  projects: ['<rootDir>/apps/ngx-localstorage-demo'],
+  projects: [
+    '<rootDir>/apps/ngx-localstorage-demo',
+    '<rootDir>/libs/ngx-localstorage',
+  ],
 };

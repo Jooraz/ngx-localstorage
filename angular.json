@@ -1,6 +1,33 @@
 {
   "version": 1,
   "projects": {
+    "ngx-localstorage": {
+      "projectType": "library",
+      "root": "libs/ngx-localstorage",
+      "sourceRoot": "libs/ngx-localstorage/src",
+      "prefix": "ngx-localstorage",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/ngx-localstorage"
+          ],
+          "options": {
+            "jestConfig": "libs/ngx-localstorage/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/ngx-localstorage/src/**/*.ts",
+              "libs/ngx-localstorage/src/**/*.html"
+            ]
+          }
+        }
+      }
+    },
     "ngx-localstorage-demo": {
       "projectType": "application",
       "root": "apps/ngx-localstorage-demo",
@@ -9,7 +36,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/ngx-localstorage-demo",
             "index": "apps/ngx-localstorage-demo/src/index.html",
@@ -21,7 +50,9 @@
               "apps/ngx-localstorage-demo/src/favicon.ico",
               "apps/ngx-localstorage-demo/src/assets"
             ],
-            "styles": ["apps/ngx-localstorage-demo/src/styles.scss"],
+            "styles": [
+              "apps/ngx-localstorage-demo/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -86,11 +117,17 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/ngx-localstorage-demo"],
+          "outputs": [
+            "coverage/apps/ngx-localstorage-demo"
+          ],
           "options": {
             "jestConfig": "apps/ngx-localstorage-demo/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
@@ -115,7 +152,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/ngx-localstorage-demo-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/ngx-localstorage-demo-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
