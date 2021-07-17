@@ -15,7 +15,7 @@
         "noUnusedParameters": true,
         "noUnusedLocals": true,
         "rootDir": "schematics",
-        "outDir": "../../dist/ngx-localstorage/schematics",
+        "outDir": "../../dist/libs/ngx-localstorage/schematics",
         "skipDefaultLibCheck": true,
         "skipLibCheck": true,
         "sourceMap": true,
