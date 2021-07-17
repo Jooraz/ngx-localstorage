@@ -7,7 +7,7 @@
     [
       "@semantic-release/npm",
       {
-        "pkgRoot": "./dist/ngx-localstorage",
+        "pkgRoot": "./dist/libs/ngx-localstorage",
         "tarballDir": "dist"
       }
     ],
