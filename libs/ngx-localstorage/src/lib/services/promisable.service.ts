@@ -57,10 +57,10 @@ export class PromisableService {
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    * @param serializer  Optional serilizer.
    */
-  public set(key: string, value: any, prefixOrSerializer?: string | StorageSerializer): Promise<boolean>;
-  public set(key: string, value: any, prefixOrSerializer: string | StorageSerializer): Promise<boolean>;
-  public set(key: string, value: any, prefixOrSerializer: string, serializer: StorageSerializer): Promise<boolean>;
-  public set(key: string, value: any, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): Promise<boolean> {
+  public set(key: string, value: unknown, prefixOrSerializer?: string | StorageSerializer): Promise<boolean>;
+  public set(key: string, value: unknown, prefixOrSerializer: string | StorageSerializer): Promise<boolean>;
+  public set(key: string, value: unknown, prefixOrSerializer: string, serializer: StorageSerializer): Promise<boolean>;
+  public set(key: string, value: unknown, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): Promise<boolean> {
     return new Promise((resolve, reject) => {
       try {
 
@@ -90,11 +90,11 @@ export class PromisableService {
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    * @param serializer  Optional serilizer.
    */
-  public get(key: string, prefixOrSerializer?: string | StorageSerializer): Promise<any | null | undefined>;
-  public get(key: string, prefixOrSerializer: string | StorageSerializer): Promise<any | null | undefined>;
-  public get(key: string, prefixOrSerializer: string, serializer: StorageSerializer): Promise<any | null | undefined>;
-  public get(key: string, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): Promise<any | null | undefined> {
-    return new Promise<any | null | undefined>((resolve, reject) => {
+  public get(key: string, prefixOrSerializer?: string | StorageSerializer): Promise<unknown | null | undefined>;
+  public get(key: string, prefixOrSerializer: string | StorageSerializer): Promise<unknown | null | undefined>;
+  public get(key: string, prefixOrSerializer: string, serializer: StorageSerializer): Promise<unknown | null | undefined>;
+  public get(key: string, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): Promise<unknown | null | undefined> {
+    return new Promise<unknown | null | undefined>((resolve, reject) => {
       try {
 
         const prefix = typeof prefixOrSerializer === 'string' ? prefixOrSerializer : undefined;

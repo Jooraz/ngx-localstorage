@@ -19,7 +19,7 @@ export class StorageServiceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.entryCount = this.lss.count();
+    this.entryCount = this.lss.count() || 0;
 
     this.storedObject = this.lss.get('demo-key') as { id: number; name: string; };
   }

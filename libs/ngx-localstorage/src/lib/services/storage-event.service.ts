@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { fromEvent as observableFromEvent, BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { fromEvent as observableFromEvent, Observable, Subscription, Subject } from 'rxjs';
 import { share, filter } from 'rxjs/operators';
 
 /**
@@ -8,7 +8,7 @@ import { share, filter } from 'rxjs/operators';
 @Injectable({ providedIn: 'root' })
 export class StorageEventService implements OnDestroy {
 
-  private readonly _eventStream: BehaviorSubject<StorageEvent> = new BehaviorSubject<StorageEvent>(null);
+  private readonly eventStream: Subject<StorageEvent> = new Subject<StorageEvent>();
   private readonly subscriptions = new Subscription();
 
   /**
@@ -17,7 +17,7 @@ export class StorageEventService implements OnDestroy {
   constructor() {
     this.subscriptions.add(
       observableFromEvent<StorageEvent>(window, 'storage')
-        .subscribe((ev: StorageEvent) => this._eventStream.next(ev))
+        .subscribe((ev: StorageEvent) => this.eventStream.next(ev))
     );
   }
 
@@ -25,7 +25,7 @@ export class StorageEventService implements OnDestroy {
    * Gets a stream of storage events.
    */
   public get stream(): Observable<StorageEvent> {
-    return this._eventStream
+    return this.eventStream
       .asObservable().pipe(
         filter(ev => !!ev),
         share()

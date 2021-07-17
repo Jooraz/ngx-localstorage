@@ -9,8 +9,8 @@ import { ngxLocalStorage } from 'ngx-localstorage';
 export class DecoratorComponent {
 
   @ngxLocalStorage({key: 'cbox1', nullTransformer: () => false})
-  boundBoolean: boolean;
+  public boundBoolean!: boolean;
 
   @ngxLocalStorage({key: 'txt1', prefix: 'demo'})
-  boundText: string;
+  public boundText!: string;
 }

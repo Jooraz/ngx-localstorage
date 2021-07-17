@@ -73,14 +73,14 @@ export class LocalStorageService {
    * @param value   Value to store.
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    */
-  public set(key: string, value: any, prefixOrSerializer?: string | StorageSerializer): void;
+  public set(key: string, value: unknown, prefixOrSerializer?: string | StorageSerializer): void;
   /**
    * Adds the value with the given key or updates an existing entry.
    * @param key     Key to store.
    * @param value   Value to store.
    * @param prefixOrSerializer  prefix or serializer to overwrite the configured one.
    */
-  public set(key: string, value: any, prefixOrSerializer: string | StorageSerializer): void;
+  public set(key: string, value: unknown, prefixOrSerializer: string | StorageSerializer): void;
   /**
    * Adds the value with the given key or updates an existing entry.
    * @param key     Key to store.
@@ -88,7 +88,7 @@ export class LocalStorageService {
    * @param prefix  Optional prefix to overwrite the configured one.
    * @param serializer  Optional serilizer.
    */
-  public set(key: string, value: any, prefix: string, serializer: StorageSerializer): void;
+  public set(key: string, value: unknown, prefix: string, serializer: StorageSerializer): void;
   /**
    * Adds the value with the given key or updates an existing entry.
    * @param key     Key to store.
@@ -96,7 +96,7 @@ export class LocalStorageService {
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    * @param serializer  Optional serilizer.
    */
-  public set(key: string, value: any, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): void {
+  public set(key: string, value: unknown, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): void {
 
     const prefix = typeof prefixOrSerializer === 'string' ? prefixOrSerializer : undefined;
     serializer = isSerializer(prefixOrSerializer)
@@ -124,27 +124,27 @@ export class LocalStorageService {
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    * @param serializer  Optional serilizer.
    */
-  public get(key: string, prefixOrSerializer?: string | StorageSerializer): any | null | undefined;
+  public get(key: string, prefixOrSerializer?: string | StorageSerializer): unknown | null | undefined;
   /**
    * Gets the entry specified by the given key or null.
    * @param key     Key identifying the wanted entry.
    * @param prefixOrSerializer  prefix or serializer to overwrite the configured one.
    */
-  public get(key: string, prefixOrSerializer: string | StorageSerializer): any | null | undefined;
+  public get(key: string, prefixOrSerializer: string | StorageSerializer): unknown | null | undefined;
   /**
    * Gets the entry specified by the given key or null.
    * @param key     Key identifying the wanted entry.
    * @param prefix  prefix or serializer to overwrite the configured one.
    * @param serializer serilizer.
    */
-  public get(key: string, prefix: string, serializer: StorageSerializer): any | null | undefined;
+  public get(key: string, prefix: string, serializer: StorageSerializer): unknown | null | undefined;
   /**
    * Gets the entry specified by the given key or null.
    * @param key     Key identifying the wanted entry.
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    * @param serializer  Optional serilizer.
    */
-  public get(key: string, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): any | null | undefined {
+  public get(key: string, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): unknown | null | undefined {
 
     const prefix = typeof prefixOrSerializer === 'string' ? prefixOrSerializer : undefined;
     serializer = isSerializer(prefixOrSerializer)
@@ -158,6 +158,7 @@ export class LocalStorageService {
     } catch (error) {
       console.error(error);
     }
+    return undefined;
   }
 
   /**

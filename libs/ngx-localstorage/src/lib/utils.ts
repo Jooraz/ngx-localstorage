@@ -7,7 +7,8 @@ import { StorageSerializer } from './interfaces/storage-serializer';
  * @param object Object to access
  */
 export const getProperty = (path: string[], object: unknown) =>
-  path.reduce((obj: any, p: any) => obj ? obj[p] : null, object);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  path.reduce((obj: any, p: string) => obj ? obj[p] : null, object);
 
 /**
  * Sets an objects property based on its path.
@@ -16,7 +17,8 @@ export const getProperty = (path: string[], object: unknown) =>
  * @param object Object whose value to set
  * @param falsyTransformer optional transformer handling falsy values
  */
-export const setProperty = (path: string[] | string, value: any, object: any, falsyTransformer?: () => any) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const setProperty = (path: string[] | string, value: unknown, object: any, falsyTransformer?: () => unknown) => {
   const lastKeyIndex = path.length - 1;
   for (let i = 0; i < lastKeyIndex; ++i) {
     const key = path[i];
