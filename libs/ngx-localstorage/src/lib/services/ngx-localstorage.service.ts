@@ -83,16 +83,18 @@ export class LocalStorageService {
    * @param value   Value to store.
    * @param prefix  Optional prefix to overwrite the configured one.
    * @param serializer  Optional serilizer.
+   * @param delimiter Optional delimiter to overwrite the default one
    */
-  public set(key: string, value: any, prefix: string, serializer: StorageSerializer): void;
+  public set(key: string, value: any, prefix: string, serializer: StorageSerializer, delimiter?: string): void;
   /**
    * Adds the value with the given key or updates an existing entry.
    * @param key     Key to store.
    * @param value   Value to store.
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    * @param serializer  Optional serilizer.
+   * @param delimiter Optional delimiter to overwrite the default one
    */
-  public set(key: string, value: any, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): void {
+  public set(key: string, value: any, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer, delimiter?: string): void {
 
     const prefix = typeof prefixOrSerializer === 'string' ? prefixOrSerializer : undefined;
     serializer = isSerializer(prefixOrSerializer)
@@ -108,7 +110,7 @@ export class LocalStorageService {
         value !== null &&
         value !== undefined)
     ) {
-      this.storage.setItem(constructKey(key, prefix, this.config.prefix, this.config.delimiter), serializer.serialize(value));
+      this.storage.setItem(constructKey(key, prefix, this.config.prefix, delimiter || this.config.delimiter), serializer.serialize(value));
     } else {
       this.remove(key, prefix);
     }
@@ -132,15 +134,17 @@ export class LocalStorageService {
    * @param key     Key identifying the wanted entry.
    * @param prefix  prefix or serializer to overwrite the configured one.
    * @param serializer serilizer.
+   * @param delimiter Optional delimiter to overwrite the default one
    */
-  public get(key: string, prefix: string, serializer: StorageSerializer): any | null | undefined;
+  public get(key: string, prefix: string, serializer: StorageSerializer, delimiter?: string): any | null | undefined;
   /**
    * Gets the entry specified by the given key or null.
    * @param key     Key identifying the wanted entry.
    * @param prefixOrSerializer  Optional prefix or serializer to overwrite the configured one.
    * @param serializer  Optional serilizer.
+   * @param delimiter Optional delimiter to overwrite the default one
    */
-  public get(key: string, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer): any | null | undefined {
+  public get(key: string, prefixOrSerializer?: string | StorageSerializer, serializer?: StorageSerializer, delimiter?: string): any | null | undefined {
 
     const prefix = typeof prefixOrSerializer === 'string' ? prefixOrSerializer : undefined;
     serializer = isSerializer(prefixOrSerializer)
@@ -150,7 +154,7 @@ export class LocalStorageService {
         : this.defaultSerializer;
 
     try {
-      return serializer.deserialize(this.storage.getItem(constructKey(key, prefix, this.config.prefix, this.config.delimiter)));
+      return serializer.deserialize(this.storage.getItem(constructKey(key, prefix, this.config.prefix, delimiter || this.config.delimiter)));
     } catch (error) {
       console.error(error);
     }
@@ -160,10 +164,11 @@ export class LocalStorageService {
    * Removes the entry specified by the given key.
    * @param key     Key identifying the entry to remove.
    * @param prefix  Optional prefix to overwrite the configured one.
+   * @param delimiter Optional delimiter to overwrite the default one
    */
-  public remove(key: string, prefix?: string): void {
+  public remove(key: string, prefix?: string, delimiter?: string): void {
     try {
-      this.storage.removeItem(constructKey(key, prefix, this.config.prefix, this.config.delimiter));
+      this.storage.removeItem(constructKey(key, prefix, this.config.prefix, delimiter || this.config.delimiter));
     } catch (error) {
       console.error(error);
     }
